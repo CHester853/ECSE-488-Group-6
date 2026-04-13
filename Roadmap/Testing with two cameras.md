@@ -209,3 +209,21 @@ Try to install `freenect`
 - `pip3 install Cython "setuptools<61.0.0" wheel`
 - `pip3 install --no-build-isolation freenect`
 	- Got some warning, but successfully installed
+- **BUT** when I run the `main_system.py` again, it still fails
+
+Change `def get_video` part in `main_system.py` 
+```
+def get_video(dev_idx):
+	# Grab the raw data, but check if it actually exists first!
+	video_data = freenect.sync_get_video(dev_idx)
+	
+	if video_data is None:
+		print(f"[WARNING] Camera {dev_idx} failed to open or is missing.")
+		return None
+```
+
+Fixing the USB permission
+- `wget https://raw.githubusercontent.com/OpenKinect/libfreenect/master/platform/linux/udev/51-kinect.rules`
+- `sudo mv 51-kinect.rules /etc/udev/rules.d/`
+- `sudo udevadm control --reload-rules && sudo udevadm trigger`
+- Still fails
