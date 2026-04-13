@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Python/mode_1.md",
+                "file": "Python/mode_4.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "mode_1"
+              "title": "mode_4"
             }
           }
         ],
@@ -165,7 +165,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Python/mode_1.md",
+                "file": "Python/mode_4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +175,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for mode_1"
+              "title": "Backlinks for mode_4"
             }
           },
           {
@@ -184,12 +184,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Python/mode_1.md",
+                "file": "Python/mode_4.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from mode_1"
+              "title": "Outgoing links from mode_4"
             }
           },
           {
@@ -227,13 +227,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Python/mode_1.md",
+                "file": "Python/mode_4.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of mode_1"
+              "title": "Outline of mode_4"
             }
           }
         ]
@@ -256,11 +256,11 @@
   },
   "active": "4f9f0066ed4a12cc",
   "lastOpenFiles": [
-    "Python/main_system.md",
-    "Python/mode_1.md",
-    "Python/mode_2.md",
-    "Python/mode_4.md",
     "Python/mode_3.md",
+    "Python/mode_2.md",
+    "Python/mode_1.md",
+    "Python/main_system.md",
+    "Python/mode_4.md",
     "Final",
     "Experiment",
     "README.md",
