@@ -364,12 +364,15 @@ This time it works!
 - 1st terminal
 	- `ros core`
 - 2nd terminal
-	- `roslaunch ...`
+	- `roslaunch freenect_launch freenect.launch camera:=camera1 device_id:=#1`
 - 3rd terminal
 	- `cd chester/python`
 	- `python3 main_system.py`
 - 4th terminal
-	- `web`
+	- `rosrun web_video_server web_video_server`
+	- To watch the real-time video
+		- Go to your desire web browser
+		- `IP Address:8080` in this case is `172.20.18.178:8080`
 
 Before go to two cameras, I changed `mode_4.py` as well
 ```
