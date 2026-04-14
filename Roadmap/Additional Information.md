@@ -11,3 +11,10 @@ network:
 ```
 - Then reboot your system
 	- `sudo reboot`
+
+### IP Address
+- Raspberry Pi #6
+	- `172.20.18.178`
+- Raspberry Pi #7
+	- `172.20.54.44`
+
