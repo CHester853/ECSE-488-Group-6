@@ -111,12 +111,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Roadmap/Testing with two cameras.md",
+                "file": "Roadmap/Additional Information.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Testing with two cameras"
+              "title": "Additional Information"
             }
           }
         ],
@@ -193,7 +193,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Roadmap/Testing with two cameras.md",
+                "file": "Roadmap/Additional Information.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -203,7 +203,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Testing with two cameras"
+              "title": "Backlinks for Additional Information"
             }
           },
           {
@@ -212,12 +212,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Roadmap/Testing with two cameras.md",
+                "file": "Roadmap/Additional Information.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Testing with two cameras"
+              "title": "Outgoing links from Additional Information"
             }
           },
           {
@@ -255,13 +255,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Roadmap/Testing with two cameras.md",
+                "file": "Roadmap/Additional Information.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Testing with two cameras"
+              "title": "Outline of Additional Information"
             }
           }
         ]
@@ -284,13 +284,13 @@
   },
   "active": "9b6e1e7e993f694e",
   "lastOpenFiles": [
+    "Roadmap/Testing with system with one cameras.md",
+    "Roadmap/Additional Information.md",
     "Python/mode_4.md",
-    "Roadmap/Testing with two cameras.md",
     "Python/mode_3.md",
     "Python/mode_2.md",
     "Python/mode_1.md",
     "Python/main_system.md",
-    "Roadmap/Additional Information.md",
     "Final",
     "Roadmap",
     "README.md",
