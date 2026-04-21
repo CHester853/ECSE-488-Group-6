@@ -13,8 +13,11 @@ network:
 	- `sudo reboot`
 
 ### IP Address
-- Raspberry Pi #6
+- Raspberry Pi #6 (Might change)
 	- `172.20.18.178`
-- Raspberry Pi #7
+- Raspberry Pi #7 (Might change)
 	- `172.20.54.44`
+
+### Shared Workspace (Desktop Computer)
+Password: 7TurtleBots!
 

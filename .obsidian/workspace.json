@@ -193,7 +193,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Roadmap/Additional Information.md",
+                "file": "Roadmap/Testing with system with one camera.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -203,7 +203,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Additional Information"
+              "title": "Backlinks for Testing with system with one camera"
             }
           },
           {
@@ -212,12 +212,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Roadmap/Additional Information.md",
+                "file": "Roadmap/Testing with system with one camera.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Additional Information"
+              "title": "Outgoing links from Testing with system with one camera"
             }
           },
           {
@@ -255,13 +255,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Roadmap/Additional Information.md",
+                "file": "Roadmap/Testing with system with one camera.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Additional Information"
+              "title": "Outline of Testing with system with one camera"
             }
           }
         ]
@@ -285,8 +285,8 @@
   "active": "9b6e1e7e993f694e",
   "lastOpenFiles": [
     "Roadmap/Testing with system with one camera.md",
-    "Python/mode_4.md",
     "Roadmap/Additional Information.md",
+    "Python/mode_4.md",
     "Python/mode_3.md",
     "Python/mode_2.md",
     "Python/mode_1.md",
