@@ -18,6 +18,4 @@ network:
 - Raspberry Pi #7 (Might change)
 	- `172.20.54.44`
 
-### Shared Workspace (Desktop Computer)
-Password: 7TurtleBots!
-
+`cat /sys/module/usbcore/parameters/usbfs_memory_mb`
