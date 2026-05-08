@@ -40,5 +40,5 @@ Before running, ensure all files are in place:
 ```
 
 Or you can found in here:
-- [main_system.py](/Python/main_system)
+- [main_system.py](/Python/main_system.md)
 - 
