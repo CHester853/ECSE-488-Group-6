@@ -551,3 +551,144 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+Adding the alarm part in `main_system.py`
+```
+import cv2
+import rospy
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge, CvBridgeError
+import time
+import os
+from datetime import datetime
+
+# IMPORT CUSTOM MODE FILES
+import mode_1
+import mode_2
+import mode_3
+import mode_4
+
+# Setup paths
+DATA_DIR = os.path.expanduser("~/chester/data")
+IMG_DIR = os.path.join(DATA_DIR, "image")
+VID_DIR = os.path.join(DATA_DIR, "video")
+LOG_FILE = os.path.join(DATA_DIR, "report_log", "system_events.txt")
+
+os.makedirs(IMG_DIR, exist_ok=True)
+os.makedirs(VID_DIR, exist_ok=True)
+os.makedirs(os.path.join(DATA_DIR, "report_log"), exist_ok=True)
+
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+# --- ROS GLOBALS & SETUP ---
+bridge = CvBridge()
+latest_rgb_frame = None
+latest_depth_m = 99.9  # Default to far away
+
+def rgb_callback(data):
+    global latest_rgb_frame
+    try:
+        # Convert ROS image message to OpenCV BGR format
+        latest_rgb_frame = bridge.imgmsg_to_cv2(data, "bgr8")
+    except CvBridgeError as e:
+        print(f"[ERROR] RGB Bridge: {e}")
+
+def depth_callback(data):
+    global latest_depth_m
+    try:
+        # Convert ROS depth message to OpenCV array
+        depth_image = bridge.imgmsg_to_cv2(data, desired_encoding="passthrough")
+        
+        # Check the center pixel
+        h, w = depth_image.shape
+        center_depth = depth_image[h//2, w//2]
+        
+        # Handle ROS depth encodings (freenect usually outputs mm as 16UC1 or meters as 32FC1)
+        if center_depth == 0 or center_depth != center_depth: # Handle 0 or NaN blind spots
+            latest_depth_m = 99.9
+        elif data.encoding == "32FC1":
+            latest_depth_m = float(center_depth) # Already in meters
+        elif data.encoding == "16UC1":
+            latest_depth_m = float(center_depth) / 1000.0 # Convert mm to meters
+            
+    except CvBridgeError as e:
+        print(f"[ERROR] Depth Bridge: {e}")
+
+def main():
+    global latest_rgb_frame, latest_depth_m
+    
+    # Initialize this script as a ROS Node
+    rospy.init_node('surveillance_master', anonymous=True)
+    
+    # Subscribe to the camera topics (Matching your camera:=camera1 flag)
+    rospy.Subscriber("/camera/rgb/image_color", Image, rgb_callback)
+    rospy.Subscriber("/camera/depth/image_raw", Image, depth_callback)
+    
+    print("[INFO] Waiting for ROS camera feed...")
+    
+    cameras = [0, 1]
+    current_cam_idx = 0
+    last_swap_time = time.time()
+    current_mode = 1
+    video_writer = None
+
+    # NEW: Flag to ensure alarm only triggers once per Mode 4 entry
+    alarm_triggered = False
+
+    # Replace "while True" with the ROS standard shutdown check
+    while not rospy.is_shutdown():
+        # 1. Hardware: Grab frame from the ROS callback
+        if latest_rgb_frame is None:
+            time.sleep(0.1) # Wait for the first frame to arrive
+            continue
+            
+        # Copy the frame so we don't accidentally edit it while ROS updates it
+        frame = latest_rgb_frame.copy() 
+            
+        # 2. Logic: Detect Person
+        process_frame = cv2.resize(frame, (320, 240))
+        boxes, _ = hog.detectMultiScale(process_frame)
+        
+        person_detected = len(boxes) > 0
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        # 3. Logic: Determine the correct mode
+        if not person_detected:
+            current_mode = 1
+            if video_writer is not None:
+                video_writer.release()
+                video_writer = None
+            # Reset the alarm flag when threat is gone, ready for next trigger
+            alarm_triggered = False
+        else:
+            distance = latest_depth_m
+            if distance > 4.0:
+                current_mode = 2
+            elif distance > 2.0:
+                current_mode = 3
+            else:
+                current_mode = 4
+                # Only trigger the alarm ONCE when first entering Mode 4
+                if not alarm_triggered:
+                    os.system("mpg123 -f 4500 /home/SaPHaRI/chester/resources/alarm.mp3 &")
+                    print("[MODE 4] Alarm triggered!")
+                    alarm_triggered = True
+
+        # 4. Execution: Pass data to the separate Mode Files
+        if current_mode == 1:
+            current_cam_idx, last_swap_time = mode_1.run(
+                current_cam_idx, len(cameras), last_swap_time, swap_delay=3.0)
+                
+        elif current_mode == 2:
+            mode_2.run(frame, timestamp, IMG_DIR)
+            
+        elif current_mode == 3:
+            mode_3.run(frame, distance, timestamp, IMG_DIR, LOG_FILE)
+            
+        elif current_mode == 4:
+            video_writer = mode_4.run(frame, distance, timestamp, video_writer, VID_DIR, LOG_FILE)
+
+if __name__ == "__main__":
+    main()
+```

@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Python/mode_1.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "mode_1"
+              "title": "README"
             }
           }
         ],
@@ -200,13 +200,13 @@
   },
   "active": "2dafbab787884bf4",
   "lastOpenFiles": [
+    "Roadmap/Testing with system with one camera.md",
+    "Python/main_system.md",
+    "README.md",
+    "Python/mode_4.md",
+    "Python/mode_1.md",
     "Roadmap/Additional Information.md",
     "Roadmap/GUI.md",
-    "Roadmap/Testing with system with one camera.md",
-    "Python/mode_4.md",
-    "README.md",
-    "Python/main_system.md",
-    "Python/mode_1.md",
     "Python/mode_2.md",
     "Python/mode_3.md",
     "Final",
